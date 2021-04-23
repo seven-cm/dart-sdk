@@ -24,6 +24,9 @@ class PutByPartTask extends RequestTask<PutResponse> {
 
   final String key;
 
+  ///自定义变量，key 必须以 x: 开始
+  final Map<String,String> params;
+
   /// 设置为 0，避免子任务重试失败后 [PutByPartTask] 继续重试
   @override
   int get retryLimit => 0;
@@ -35,6 +38,7 @@ class PutByPartTask extends RequestTask<PutResponse> {
     @required this.maxPartsRequestNumber,
     this.key,
     PutController controller,
+    this.params
   })  : assert(file != null),
         assert(token != null),
         assert(partSize != null),
@@ -178,6 +182,7 @@ class PutByPartTask extends RequestTask<PutResponse> {
       parts: parts,
       key: key,
       controller: _controller,
+      params: params
     );
 
     manager.addTask(task);
