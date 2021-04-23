@@ -14,7 +14,8 @@ dependencies:
   qiniu_sdk_base:
     git:
       url: https://github.com/seven-cm/dart-sdk.git
-      tag: 0.2.0-ext
+      #tag: 0.2.0-ext
+      ref: user_params
       path: base
 
 dev_dependencies:
